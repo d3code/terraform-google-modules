@@ -19,7 +19,7 @@ resource "google_project" "project" {
 }
 
 resource "google_project_service" "service" {
-  project  = google_project.project_id
+  project  = google_project.project.project_id
   service  = each.value
   for_each = var.services
 }
