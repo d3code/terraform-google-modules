@@ -7,27 +7,19 @@ terraform {
   }
 }
 
-resource "google_project_service" "project" {
-  for_each = var.services
+data "google_billing_account" "account" {
+  billing_account = var.billing_account
+}
+
+resource "google_project" "project" {
+  name            = var.project_id
+  project_id      = var.project_id
+  org_id          = var.org_id
+  billing_account = data.google_billing_account.account.id
+}
+
+resource "google_project_service" "service" {
+  project  = google_project.project_id
   service  = each.value
-  project  = var.project
-}
-
-variable "project" {
-  description = "The project_id of the service account"
-  type        = string
-}
-
-variable "services" {
-  description = "The services to enable for the project"
-  type        = set(string)
-  default = [
-    "iam.googleapis.com",
-    "compute.googleapis.com",
-    "secretmanager.googleapis.com",
-    "sqladmin.googleapis.com",
-    "run.googleapis.com",
-    "artifactregistry.googleapis.com",
-    "cloudtasks.googleapis.com",
-  ]
+  for_each = var.services
 }
