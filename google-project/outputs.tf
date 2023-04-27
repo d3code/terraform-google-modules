@@ -13,11 +13,3 @@ output "org_id" {
 output "name" {
   value = google_project.project.name
 }
-
-output "region" {
-  value = google_project.project.region
-}
-
-output "zone" {
-  value = google_project.project.zone
-}
