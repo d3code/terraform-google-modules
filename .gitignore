@@ -1,4 +1,14 @@
+# IDE configuration files
+.idea/
+.vscode/
+
+# Operating system files
+.DS_Store
+
+# Terraform (https://www.terraform.io)
+# State should never be committed to a git repository, and so *.tfstate is ignored
 .terraform/
 .terraform.lock.hcl
 terraform.tfvars
-
+*.tfstate
+*.tfstate.backup
