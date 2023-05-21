@@ -3,24 +3,19 @@ variable "project_id" {
   type        = string
 }
 
-# -----------------------------------------------------
-
-variable "name" {
+variable "location" {
   type    = string
 }
 
-variable "image" {
+variable "domain" {
   type    = string
 }
 
-variable "region" {
+variable "managed_zone_name" {
   type    = string
 }
 
-variable "port" {
-  type = number
-}
-
-variable "commit" {
+variable "cloud_run_service_name" {
+  description = "Google Cloud Run v2 Service Name"
   type    = string
 }
