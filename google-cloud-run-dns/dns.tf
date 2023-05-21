@@ -3,7 +3,7 @@ resource "google_cloud_run_domain_mapping" "www" {
   name     = var.domain
 
   metadata {
-    namespace = var.project
+    namespace = var.project_id
   }
 
   spec {
