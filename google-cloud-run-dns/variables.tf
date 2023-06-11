@@ -16,6 +16,6 @@ variable "managed_zone_name" {
 }
 
 variable "cloud_run_service_name" {
-  description = "Google Cloud Run v2 Service Name"
+  description = "Google Cloud Run v2 Service Name [ google_cloud_run_v2_service.<service>.name ]"
   type    = string
 }
