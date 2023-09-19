@@ -18,8 +18,19 @@ resource "google_project" "project" {
   billing_account = data.google_billing_account.account.id
 }
 
+resource "time_resource" "project_create_wait" {
+  depends_on = [google_project.project]
+  create_duration = "30s"
+}
+
 resource "google_project_service" "service" {
+  depends_on = [ time_resource.project_create_wait ]
   project  = google_project.project.project_id
   service  = each.value
   for_each = var.services
+}
+
+resource "time_resource" "service_create_wait" {
+  depends_on = [google_project_service.service]
+  create_duration = "60s"
 }

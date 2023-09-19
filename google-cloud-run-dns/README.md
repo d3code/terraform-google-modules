@@ -21,13 +21,13 @@ Do do this, run the following plan. Subsequent plan runs will not fail as the re
 
 
 ```sh
-terraform plan -target="module.{your-module-name}.google_cloud_run_domain_mapping.mapping"
+terraform plan -target="module.{module}.google_cloud_run_domain_mapping.mapping"
 ```
 
 
 If you are running the plan from another directory and with a `.tfvars` use the following command.
 
 ```sh
-terraform -chdir="terraform" plan -var-file="local.tfvars" -target="module.{your-module-name}.google_cloud_run_domain_mapping.mapping"
+terraform -chdir="terraform" plan -var-file="local.tfvars" -target="module.{module}.google_cloud_run_domain_mapping.mapping"
 ```
 
